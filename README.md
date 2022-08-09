@@ -7,11 +7,13 @@ server is created using Yarn
 
 ## Setup
 -frontend
+```
 yarn create vite
 choose react
 project name:book-app
-yarn to install packages.
-yarn dev to start the development server
-
+cd book-app
+yarn (to install packages).
+yarn dev (to start the development server)
+```
 -server
 yarn install
