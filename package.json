@@ -1,5 +1,5 @@
 {
-  "name": "react-dashboard",
+  "name": "book-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,7 +12,6 @@
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.34.0",
     "react-router-dom": "^6.3.0",
     "recoil": "^0.7.4",
     "recoil-persist": "^4.2.0"
