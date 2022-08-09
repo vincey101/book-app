@@ -16,4 +16,10 @@ yarn (to install packages).
 yarn dev (to start the development server)
 ```
 -server
+```
+cd server
 yarn install
+yarn add nodemon cors body-parser dotenv consola
+add a script file to package.json
+yarn dev
+```
