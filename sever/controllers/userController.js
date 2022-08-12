@@ -35,7 +35,8 @@ module.exports.registration = async (req, res) => {
         }
 
     } catch (error) {
-        console.log(error);
+        res.status(500).send({ message: "internal server error" });
+
     }
 
 }
@@ -44,7 +45,7 @@ module.exports.login = async (req, res) => {
     try {
         if (req.body.email == "" || req.body.password == "") {
             res.status(400).json({
-                message: "invalid users"
+                message: "invalid user"
             })
         } else {
             const user = await userModel.findOne({
@@ -57,17 +58,17 @@ module.exports.login = async (req, res) => {
                         message: user
                     })
                 }
+                else {
+                    res.status(404).json({
+                        message: "user not found"
+                    })
+                }
 
-
-            } else {
-                res.status(404).json({
-                    message: "user not found"
-                })
             }
-
         }
 
     } catch (error) {
+        res.status(500).send({ message: "internal server error" });
 
     }
 }

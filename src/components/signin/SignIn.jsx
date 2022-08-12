@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import axios from 'axios'
+import { useToasts } from 'react-toast-notifications';
+
 import { useRecoilState } from 'recoil';
 import { userState } from "../atom/UserAtom"
 
@@ -10,17 +12,22 @@ function Signin() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate();
+    const { addToast } = useToasts();
+
 
     const [user, setuser] = useRecoilState(userState)
     const login = (event) => {
         event.preventDefault();
         axios.post("http://localhost:8080/login", { email: email, password: password })
             .then((response) => {
+                addToast("User logged in successfully!", { appearance: "success" })
                 setuser(response.data.message)
                 navigate("../", { replace: true })
             })
             .catch((error) => {
-                console.log(error);
+                if (error.response) {
+                    addToast(error.response.data.message, { appearance: "error" });
+                }
             })
 
     }

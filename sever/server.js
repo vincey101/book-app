@@ -25,7 +25,7 @@ mongoose.connect(process.env.KEY_MONGO, (err, data) => {
         })
     } else {
         success({
-            message: "db successfully",
+            message: "db successfully connected",
             badge: true
         })
     }

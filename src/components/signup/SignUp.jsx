@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useToasts } from 'react-toast-notifications';
 import axios from 'axios';
 import './signup.css';
 
 
 function SignUp() {
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const navigate = useNavigate()
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const { addToast } = useToasts();
 
 
     const register = (event) => {
@@ -19,12 +21,17 @@ function SignUp() {
             password: password
         })
             .then((response) => {
-                console.log(response.data.message)
+                addToast(response.data.message, { appearance: "success" })
                 navigate("../signin", { replace: true });
             })
             .catch((error) => {
-                console.log(error.message);
+                if (error.response) {
+                    addToast(error.response.data.message, { appearance: "error" });
+                }
             })
+        setUsername("");
+        setEmail("");
+        setPassword("");
     }
 
     return (

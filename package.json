@@ -13,6 +13,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
+    "react-toast-notifications": "^2.5.1",
     "recoil": "^0.7.4",
     "recoil-persist": "^4.2.0"
   },
