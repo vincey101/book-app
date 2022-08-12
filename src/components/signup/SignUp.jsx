@@ -26,7 +26,10 @@ function SignUp() {
             })
             .catch((error) => {
                 if (error.response) {
-                    addToast(error.response.data.message, { appearance: "error" });
+                    addToast(error.response.data.message, {
+                        appearance: "error",
+                        id: 'customId'
+                    });
                 }
             })
         setUsername("");
